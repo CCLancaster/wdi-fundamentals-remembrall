@@ -42,7 +42,7 @@ h2 {
 	font-size: 20px
  }
 
-/* h3 added as part of bonus work suggesting we put...*/
+/* h3 added as part of bonus work suggesting we put*/
 
 h3 {
 	color: #0D2C40;
@@ -69,7 +69,7 @@ a {
 
 /* For hover style transition (bonus)*/
 	border-bottom: 2px solid transparent;
-/* transition: all .3s ease-in-out */
+
 }
 
 a:hover {
@@ -141,7 +141,7 @@ aside {
 	
 }
 
-#game {
+#game-board {
 	clear:both;
 }
 
@@ -151,6 +151,18 @@ GAME BOARD
 
 img {
 	margin: 40px 8px 0 8px;
+}	
+
+#button {
+  background-color: #e7e7e7;
+  border: 2px solid #00A6B3;
+  color: #00A6B3;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 40px auto;
 }
 
 /*=====================

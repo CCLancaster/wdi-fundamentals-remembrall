@@ -1,9 +1,4 @@
 // console.log("Up and running!") - to test 
-// for possible use later:
-// console.log("User flipped" + cardOne)
-// console.log("User flipped" + cardTwo)
-
-
 
 const cards = [
 {
@@ -30,31 +25,49 @@ const cards = [
 
 const cardsInPlay = [];
 
-function checkForMatch () {
-if (cardsInPlay.length === 2) {
+const checkForMatch = function() {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
-		console.log("You found a match!");
+		alert("You found a match!");
 	} else {
-		console.log("Sorry, try again.");
+		alert("Sorry, try again.");
 	}
-}
 };
 
-let cardId;
-
-function flipCard(cardId) {
-
-	console.log("User flipped " + cardId.rank + ".");
-	console.log(cardId.cardImage);
-	console.log(cardId.suit);
-	cardsInPlay.push(cardId.rank);
-	checkForMatch ();
-
+const flipCard = function() {
+	let cardId = this.getAttribute('data-id');
+	cardsInPlay.push(cards[cardId].rank);
+	this.setAttribute('src', cards[cardId].cardImage);
+	if (cardsInPlay.length === 2) {
+	checkForMatch();
+	}
 };
 
-flipCard(cards[0]);
-flipCard(cards[2]);
+//"console.log" here is optional, but I found helpful when "inspecting" on Chrome. 
+console.log(cardsInPlay);
 
+const createBoard = function() {
+		for (let i = 0; i < cards.length; i++) {
+		let cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
+	}
+};
 
+const resetCards = function() {
+    	for (let i = 0; i < cards.length; i++) {
+    	let cardElement = document.getElementsByTagName('img');
+    	cardElement[i].setAttribute('src', "images/back.png");
+    }
+ cardsInPlay.pop();
+ cardsInPlay.pop();
+};
+
+const button = document.getElementById('button');
+
+button.addEventListener('click', resetCards);
+
+createBoard();
 
 
